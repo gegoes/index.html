@@ -10,8 +10,9 @@
         .chat-container { width:100%; max-width:820px; height:96vh; max-height:720px; background:#14181c; border-radius:24px; box-shadow:0 20px 60px rgba(0,0,0,0.7); display:flex; flex-direction:column; overflow:hidden; }
         .chat-header { padding:18px 24px; border-bottom:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-between; align-items:center; flex-shrink:0; background:rgba(20,24,28,0.85); backdrop-filter:blur(8px); }
         .chat-header-left { display:flex; align-items:center; gap:12px; }
-        .logo { width:32px; height:32px; background:linear-gradient(135deg,#7c3aed,#4f46e5); border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; color:#fff; }
-        .badge { font-size:10px; font-weight:500; background:rgba(124,58,237,0.2); color:#a78bfa; padding:2px 10px; border-radius:20px; border:1px solid rgba(124,58,237,0.15); text-transform:uppercase; }
+        .logo { width:32px; height:32px; background:linear-gradient(135deg,#f97316,#ea580c); border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; color:#fff; }
+        .chat-header h1 { font-size:17px; font-weight:600; background:linear-gradient(135deg,#e4e6eb,#a8b2c0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .badge { font-size:10px; font-weight:500; background:rgba(249,115,22,0.2); color:#fb923c; padding:2px 10px; border-radius:20px; border:1px solid rgba(249,115,22,0.15); text-transform:uppercase; }
         .header-actions { display:flex; gap:10px; align-items:center; }
         .header-actions select { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); color:#d1d5db; padding:5px 12px; border-radius:8px; font-size:12px; font-weight:500; cursor:pointer; outline:none; }
         .header-actions select:hover { background:rgba(255,255,255,0.10); }
@@ -25,31 +26,24 @@
         .messages-area::-webkit-scrollbar { width:4px; }
         .messages-area::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.12); border-radius:20px; }
         
-        /* FIX 1: Adding flex display to messagesContainer to apply spacing */
-        #messagesContainer {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            width: 100%;
-        }
+        /* FIX: Flex container for spacing */
+        #messagesContainer { display:flex; flex-direction:column; gap:14px; width:100%; }
 
         .message { display:flex; gap:12px; max-width:88%; animation:fadeSlideUp 0.3s ease-out; }
         .message.user { align-self:flex-end; flex-direction:row-reverse; }
         .message.ai { align-self:flex-start; }
         @keyframes fadeSlideUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         .message-avatar { width:32px; height:32px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:600; margin-top:2px; }
-        .message.user .message-avatar { background:linear-gradient(135deg,#4f46e5,#7c3aed); color:#fff; }
-        .message.ai .message-avatar { background:linear-gradient(135deg,#1a2332,#2a3a4e); color:#60a5fa; border:1px solid rgba(96,165,250,0.15); }
+        .message.user .message-avatar { background:linear-gradient(135deg,#f97316,#ea580c); color:#fff; }
+        .message.ai .message-avatar { background:linear-gradient(135deg,#1a2332,#2a3a4e); color:#fb923c; border:1px solid rgba(251,146,60,0.15); }
         .message-bubble { background:#1e262e; padding:12px 16px; border-radius:16px; line-height:1.6; font-size:14.5px; word-wrap:break-word; border:1px solid rgba(255,255,255,0.04); position:relative; }
-        .message.user .message-bubble { background:linear-gradient(135deg,#4f46e5,#7c3aed); border-radius:16px; color:#fff; }
+        .message.user .message-bubble { background:linear-gradient(135deg,#f97316,#ea580c); border-radius:16px; color:#fff; }
         .message.ai .message-bubble { border-radius:16px; }
         .message-bubble .message-text { white-space:pre-wrap; min-height:1em; }
-        
         .message-bubble .message-text p { margin: 0 0 8px 0; }
         .message-bubble .message-text p:last-child { margin-bottom: 0; }
         .message-bubble .message-text ul { margin: 6px 0 8px 16px; padding-left: 4px; }
         .message-bubble .message-text ul li { margin-bottom: 4px; }
-        
         .message-bubble code { background:rgba(0,0,0,0.3); padding:1px 6px; border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:13px; color:#fcd34d; }
         .message-bubble pre { background:rgba(0,0,0,0.4); padding:10px 14px; border-radius:8px; overflow-x:auto; margin:6px 0 2px; font-size:13px; font-family:'JetBrains Mono',monospace; border:1px solid rgba(255,255,255,0.05); color:#d1d5db; }
         .message-bubble pre code { background:transparent; padding:0; color:inherit; }
@@ -60,20 +54,20 @@
         .message-actions button.copied { color:#34d399; }
         .typing-indicator { display:none; align-items:center; gap:12px; padding:4px 0 8px; animation:fadeSlideUp 0.2s ease-out; }
         .typing-indicator.active { display:flex; }
-        .typing-indicator .avatar { width:32px; height:32px; border-radius:10px; background:linear-gradient(135deg,#1a2332,#2a3a4e); border:1px solid rgba(96,165,250,0.12); display:flex; align-items:center; justify-content:center; font-size:14px; color:#60a5fa; flex-shrink:0; }
+        .typing-indicator .avatar { width:32px; height:32px; border-radius:10px; background:linear-gradient(135deg,#1a2332,#2a3a4e); border:1px solid rgba(251,146,60,0.12); display:flex; align-items:center; justify-content:center; font-size:14px; color:#fb923c; flex-shrink:0; }
         .typing-dots { display:flex; gap:5px; background:#1e262e; padding:10px 18px; border-radius:16px; border:1px solid rgba(255,255,255,0.04); }
-        .typing-dots span { width:8px; height:8px; background:#60a5fa; border-radius:50%; animation:dotPulse 1.4s infinite both; }
-        .typing-dots span:nth-child(2), .typing-dots span:nth-child(3) { background:rgba(96,165,250,0.2); }
+        .typing-dots span { width:8px; height:8px; background:#fb923c; border-radius:50%; animation:dotPulse 1.4s infinite both; }
+        .typing-dots span:nth-child(2), .typing-dots span:nth-child(3) { background:rgba(251,146,60,0.2); }
         .typing-dots span:nth-child(2) { animation-delay:0.2s; }
         .typing-dots span:nth-child(3) { animation-delay:0.4s; }
         @keyframes dotPulse { 0%,80%,100% { opacity:0.2; transform:scale(0.8); } 40% { opacity:1; transform:scale(1); } }
         .input-area { padding:14px 20px 20px; border-top:1px solid rgba(255,255,255,0.05); flex-shrink:0; background:rgba(20,24,28,0.8); backdrop-filter:blur(4px); display:flex; gap:10px; align-items:flex-end; }
         .input-wrapper { flex:1; background:rgba(255,255,255,0.04); border-radius:14px; border:1px solid rgba(255,255,255,0.06); transition:0.25s; display:flex; align-items:flex-end; }
-        .input-wrapper:focus-within { border-color:rgba(124,58,237,0.4); background:rgba(255,255,255,0.06); box-shadow:0 0 0 3px rgba(124,58,237,0.08); }
+        .input-wrapper:focus-within { border-color:rgba(249,115,22,0.4); background:rgba(255,255,255,0.06); box-shadow:0 0 0 3px rgba(249,115,22,0.08); }
         .input-wrapper textarea { width:100%; background:transparent; border:none; color:#e4e6eb; padding:12px 16px; font-size:14px; font-family:inherit; resize:none; outline:none; line-height:1.5; min-height:48px; max-height:140px; }
         .input-wrapper textarea::placeholder { color:rgba(255,255,255,0.2); }
-        .btn-send { background:linear-gradient(135deg,#4f46e5,#7c3aed); border:none; color:#fff; width:48px; height:48px; border-radius:14px; font-size:20px; cursor:pointer; transition:0.25s; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 16px rgba(79,70,229,0.25); }
-        .btn-send:hover:not(:disabled) { transform:scale(1.04); box-shadow:0 6px 24px rgba(79,70,229,0.35); }
+        .btn-send { background:linear-gradient(135deg,#f97316,#ea580c); border:none; color:#fff; width:48px; height:48px; border-radius:14px; font-size:20px; cursor:pointer; transition:0.25s; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 16px rgba(249,115,22,0.3); }
+        .btn-send:hover:not(:disabled) { transform:scale(1.04); box-shadow:0 6px 24px rgba(249,115,22,0.45); }
         .btn-send:active:not(:disabled) { transform:scale(0.94); }
         .btn-send:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
         .btn-send svg { width:22px; height:22px; fill:currentColor; }
@@ -178,7 +172,6 @@
             const API_BASE = 'https://text.pollinations.ai';
 
             async function streamResponse(prompt, model, history, onChunk, signal) {
-                // Build context from history (excluding current user message)
                 let context = '';
                 if (history.length > 0) {
                     const recent = history.slice(-10);
@@ -186,18 +179,16 @@
                         context += `${msg.role === 'user' ? 'User' : 'AI'}: ${msg.content}\n`;
                     }
                 }
-                // Append the new user message at the end
                 const fullPrompt = context ? `${context}User: ${prompt}\nAI:` : prompt;
 
                 const seed = Math.floor(Math.random() * 2147483647);
                 const encodedPrompt = encodeURIComponent(fullPrompt);
-                const url =
-                    `${API_BASE}/${encodedPrompt}?model=${encodeURIComponent(model)}&seed=${seed}&stream=true`;
+                const url = `${API_BASE}/${encodedPrompt}?model=${encodeURIComponent(model)}&seed=${seed}&stream=true`;
 
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: { 'Accept': 'text/event-stream' },
-                    signal: signal, // use the provided AbortSignal
+                    signal: signal,
                 });
 
                 if (!response.ok) {
@@ -225,7 +216,6 @@
                     buffer = lines.pop() || '';
 
                     for (const line of lines) {
-                        // Trim carriage returns and trailing spaces
                         const trimmed = line.trim();
                         if (trimmed.startsWith('data: ')) {
                             const data = trimmed.slice(6).trim();
@@ -239,13 +229,10 @@
                                     accumulated += delta.content;
                                     onChunk(accumulated);
                                 }
-                            } catch (_) {
-                                // ignore malformed JSON (could be empty data)
-                            }
+                            } catch (_) { /* ignore */ }
                         }
                     }
                 }
-
                 return accumulated;
             }
 
@@ -264,7 +251,7 @@
                     messagesContainer.appendChild(el);
                 }
                 scrollToBottom();
-                saveState(); // persist after each render
+                saveState();
             }
 
             function createMessageElement(msg) {
@@ -303,7 +290,6 @@
                                 copyBtn.classList.remove('copied');
                             }, 2000);
                         }).catch(() => {
-                            // fallback
                             const range = document.createRange();
                             range.selectNode(textDiv);
                             window.getSelection().removeAllRanges();
@@ -324,14 +310,10 @@
                 return wrapper;
             }
 
-            // ─── FIX 2: Completely rewritten formatting logic ────────
             function formatMessageText(text) {
                 if (!text) return '&nbsp;';
-
-                // 1. Escape HTML basic characters
                 let safeText = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-                // 2. Extract and protect Code Blocks
                 let codeBlocks = [];
                 safeText = safeText.replace(/```(\w*)\n([\s\S]*?)```/g, (match, lang, code) => {
                     const id = `__CODE_BLOCK_${codeBlocks.length}__`;
@@ -339,12 +321,10 @@
                     return id;
                 });
 
-                // 3. Inline Text Formatting (Bold, Italics, Inline Code)
                 safeText = safeText.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
                 safeText = safeText.replace(/\*([^*]+)\*/g, '<em>$1</em>');
                 safeText = safeText.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-                // 4. Split by double line breaks (\n\n) to get paragraphs / list blocks
                 const blocks = safeText.split(/\n{2,}/);
                 let htmlParts = [];
 
@@ -354,36 +334,29 @@
 
                     const lines = block.split('\n');
 
-                    // Detect if this block starts with a bullet point (- or *)
                     if (lines.length > 0 && /^[-*]\s/.test(lines[0].trim())) {
                         let listItems = [];
                         let currentItemLines = [];
 
                         for (let line of lines) {
                             line = line.trim();
-                            // Check for a new list item
                             if (/^[-*]\s/.test(line)) {
-                                // Finish previous item if exists
                                 if (currentItemLines.length > 0) {
                                     listItems.push(`<li>${currentItemLines.join('<br>')}</li>`);
                                     currentItemLines = [];
                                 }
-                                currentItemLines.push(line.replace(/^[-*]\s/, '')); // Remove bullet
+                                currentItemLines.push(line.replace(/^[-*]\s/, ''));
                             } else {
-                                // This line belongs to the current list item (multi-line item)
                                 if (line) currentItemLines.push(line);
                             }
                         }
-                        // Push the very last item
                         if (currentItemLines.length > 0) {
                             listItems.push(`<li>${currentItemLines.join('<br>')}</li>`);
                         }
-
                         if (listItems.length > 0) {
                             htmlParts.push(`<ul>${listItems.join('')}</ul>`);
                         }
                     } else {
-                        // Standard paragraph. Replace single newlines with <br>
                         const pContent = block.replace(/\n/g, '<br>');
                         if (pContent) {
                             htmlParts.push(`<p>${pContent}</p>`);
@@ -392,12 +365,9 @@
                 }
 
                 let finalHtml = htmlParts.join('');
-
-                // 5. Restore Code Blocks
                 for (let i = 0; i < codeBlocks.length; i++) {
                     finalHtml = finalHtml.split(`__CODE_BLOCK_${i}__`).join(codeBlocks[i]);
                 }
-
                 return finalHtml || '&nbsp;';
             }
 
@@ -414,15 +384,12 @@
                 userInput.value = '';
                 userInput.style.height = 'auto';
 
-                // 1. Add user message
                 const userMsg = { role: 'user', content: text, timestamp: new Date() };
                 state.messages.push(userMsg);
                 renderMessages();
 
-                // 2. Prepare AI message object (but DON'T push it to state yet)
                 const aiMsg = { role: 'ai', content: '', timestamp: new Date() };
                 
-                // 3. Show the standalone typing indicator
                 typingIndicator.classList.add('active');
                 
                 state.isProcessing = true;
@@ -447,7 +414,6 @@
                             firstChunkReceived = true;
                             typingIndicator.classList.remove('active');
                             
-                            // 4. Add AI message to state and render it NOW
                             state.messages.push(aiMsg);
                             renderMessages();
                             
@@ -555,7 +521,7 @@
             }
             renderMessages();
             userInput.focus();
-            console.log('✦ Polli Chat with fixed streaming and spacing');
+            console.log('✦ Polli Chat Orange Flavour ready');
         })();
     </script>
 </body>
